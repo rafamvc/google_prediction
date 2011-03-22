@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "google_prediction.gemspec",
     "lib/google_prediction.rb",
     "lib/google_prediction/classifier.rb",
     "lib/ruby-google-prediction-api.rb",
