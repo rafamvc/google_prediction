@@ -1,3 +1,17 @@
+# Copyright (C) 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 require 'rubygems'
 require 'bundler'
 begin
@@ -11,19 +25,18 @@ require 'rake'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "ruby-google-prediction-api"
-  gem.homepage = "http://github.com/rafamvc/ruby-google-prediction-api"
-  gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "rafamvc@gmail.com"
-  gem.authors = ["Rafael Cardoso"]
-  # Include your dependencies below. Runtime dependencies are required when using your gem,
-  # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
-  #  gem.add_development_dependency 'rspec', '> 1.2.3'
+  gem.authors = ['Brandon Liu']
+  gem.email = 'bdon@google.com'
+  gem.homepage = 'http://code.google.com/p/ruby-google-prediction-api'
+  gem.summary = "Google Prediction API Ruby Library"
+  gem.name = 'google_prediction'
+  gem.version = '0.0.1'
+  gem.add_runtime_dependency('gdata', '>= 1.1.1')
+  gem.add_runtime_dependency('activesupport', '>= 2.3.2')
+  gem.requirements = 'Training data on Google Storage'
+  gem.description = "This gem provides a wrapper around the Google Prediction API."
 end
+
 Jeweler::RubygemsDotOrgTasks.new
 
 require 'rake/testtask'
@@ -47,7 +60,15 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "ruby-google-prediction-api #{version}"
+  rdoc.title = "hello-gem #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+task :test do
+  ruby "test/test_google_prediction.rb"
+end
+
+task :doc do
+  system "rdoc"
 end
